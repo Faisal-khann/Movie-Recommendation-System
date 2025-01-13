@@ -109,7 +109,7 @@ protobuf==5.28.2
 psutil==5.9.8
 pure-eval==0.2.2
 pyarrow==15.0.0
-PyAudio @ file:///C:/Users/faisa/Downloads/myjarvis/PyAudio-0.2.11-cp310-cp310-win_amd64.whl
+PyAudio
 PyAutoGUI==0.9.54
 pycparser==2.22
 pydeck==0.9.1
