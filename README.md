@@ -83,6 +83,6 @@
     Together, let's make this recommendation system even more powerful and versatile.</p>
 
 ## License ⬇️
-This project is licensed under the [MIT License](https://github.com/Faisal-khann/Movie-Recommendatio-System?tab=MIT-1-ov-file)
+This project is licensed under the [MIT License](https://github.com/Faisal-khann/Movie-Recommendation-System?tab=MIT-1-ov-file)
 2025 Faisal Khan
 <p>If you like this project don’t forget to 🌟(star) the repository and Clone this repository.</p>
