@@ -75,7 +75,7 @@
 
 ## Screenshot
 
- ![Output](https://github.com/user-attachments/assets/4bf40aec-34b8-4533-be7e-88ada0d9dced)
+![Output](https://github.com/user-attachments/assets/b48deaee-7c2d-4a1c-81e1-f1db3b5bfb33)
 
 
 ## Contributions ⬇️
@@ -83,6 +83,6 @@
     Together, let's make this recommendation system even more powerful and versatile.</p>
 
 ## License ⬇️
-This project is licensed under the [MIT License](https://github.com/Faisal-khann/Movie-Recommender-System?tab=MIT-1-ov-file)
+This project is licensed under the [MIT License](https://github.com/Faisal-khann/Movie-Recommendation-System?tab=MIT-1-ov-file)
 2025 Faisal Khan
 <p>If you like this project don’t forget to 🌟(star) the repository and Clone this repository.</p>
