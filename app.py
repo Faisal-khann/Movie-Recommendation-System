@@ -52,6 +52,11 @@ movies_dict = pickle.load(open('movie_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
 similarity = pickle.load(open('similarity.pkl', 'rb'))
 
+# Initialize Streamlit session state for watchlist
+if "watchlist" not in st.session_state:
+    st.session_state.watchlist = []
+
+
 # Streamlit app setup
 st.markdown(
     """
@@ -138,6 +143,13 @@ st.markdown(
 # Select box for user input
 selected_movie_name = st.selectbox("What are you looking for today?", movies['title'].values)
 
+# Initialize Streamlit session state for watchlist if not already present
+# if "watchlist" not in st.session_state:
+#     st.session_state.watchlist = []
+
+# Debugging: Display the current state of the watchlist
+# st.sidebar.write(f"DEBUG: Current watchlist: {st.session_state.watchlist}")
+
 # Recommend movies when the button is clicked
 if st.button('Recommend'):
     (names, posters, ratings, trailers) = recommend(selected_movie_name)
@@ -166,96 +178,22 @@ if st.button('Recommend'):
                     unsafe_allow_html=True,
                 )
 
-# ****************Other Format*********************
-# # Streamlit app setup
-# st.markdown(
-#     """
-#     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTTXJNf1MqL0Y0HL8d49O5+U1fnXCCr8sUovDzmUwJaT/nkTyUM2Fu4Ikm9T9n2zpO5ozhDgUQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-#     <style>
-#     body {
-#         background-color: #2c2c2c;
-#         color: #f5f5f5;
-#         font-family: 'Roboto', sans-serif;
-#     }
-#     .stButton>button {
-#         background-color: #2196f3;
-#         color: #ffffff;
-#         font-weight: 600;
-#         border-radius: 6px;
-#         padding: 8px 16px;
-#         border: 1px solid #2196f3;
-#         transition: all 0.3s ease;
-#         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-#     }
-#     .stButton>button:hover {
-#         background-color: #1976d2;
-#         color: #ffffff;
-#         border-color: #1976d2;
-#         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
-#     }
-#     .movie-container {
-#         background-color: #333;
-#         padding: 15px;
-#         border-radius: 15px;
-#         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-#         transition: transform 0.3s ease, box-shadow 0.3s ease;
-#         text-align: center;
-#         max-width: 200px;
-#         margin: auto;
-#     }
-#     .movie-container:hover {
-#         transform: scale(1.1);
-#         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-#     }
-#     .movie-title {
-#         font-size: 16px;
-#         font-weight: bold;
-#         color: #e0e0e0;
-#         margin-top: 10px;
-#     }
-#     .movie-rating {
-#         font-size: 14px;
-#         color: #b0b0b0;
-#         margin-top: 5px;
-#     }
-#     img {
-#         border-radius: 10px;
-#     }
-#     .expander {
-#         margin-top: 15px;
-#     }
-#     </style>
-#     """,
-#     unsafe_allow_html=True,
-# )
+                # Add to watchlist with a button
+                # if st.button(f"Save {name} to Watchlist", key=f"watchlist_{name}"):
+                #     # Ensure the watchlist is updated
+                #     if name not in st.session_state.watchlist:
+                #         st.session_state.watchlist.append(name)
+                #         st.success(f"Added {name} to your watchlist!")
+                #     else:
+                #         st.warning(f"{name} is already in your watchlist.")
 
-# st.title('🎥 Movie Recommender System')
-# st.subheader('Discover your next favorite movie!')
+# Watchlist in Sidebar
+# st.sidebar.header("🎥 Your Watchlist")
+# if st.session_state.watchlist:
+#     # Display the saved watchlist
+#     for movie in st.session_state.watchlist:
+#         st.sidebar.write(f"⭐ {movie}")
+# else:
+#     st.sidebar.write("Your watchlist is empty.")
 
-# # Select box for user input
-# selected_movie_name = st.selectbox("What are you looking for today?", movies['title'].values)
-
-# # Recommend movies when the button is clicked
-# if st.button('Recommend'):
-#     names, posters, ratings, trailers = recommend(selected_movie_name)
-#     st.subheader("✨ Recommended Movies for You:")
-
-#     # Display movies in rows of 3 columns (for better visual layout)
-#     for i in range(0, len(names), 3):
-#         cols = st.columns(3)
-#         for col, name, poster, rating, trailer in zip(cols, names[i:i+3], posters[i:i+3], ratings[i:i+3], trailers[i:i+3]):
-#             with col:
-#                 st.markdown(
-#                     f"""
-#                     <div class="movie-container">
-#                         <img src="{poster}" alt="{name}" style="width:100%; height:auto;">
-#                         <div class="movie-title">{name}</div>
-#                         <div class="movie-rating">Rating: {rating}/10</div> <!-- Actual rating -->
-#                     </div>
-#                     """,
-#                     unsafe_allow_html=True,
-#                 )
-#                 if trailer:
-#                     with st.expander(f"🎬 Watch Trailer for {name}", expanded=False):
-#                         st.video(trailer)
 
