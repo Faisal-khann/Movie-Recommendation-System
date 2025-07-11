@@ -143,13 +143,6 @@ st.markdown(
 # Select box for user input
 selected_movie_name = st.selectbox("What are you looking for today?", movies['title'].values)
 
-# Initialize Streamlit session state for watchlist if not already present
-# if "watchlist" not in st.session_state:
-#     st.session_state.watchlist = []
-
-# Debugging: Display the current state of the watchlist
-# st.sidebar.write(f"DEBUG: Current watchlist: {st.session_state.watchlist}")
-
 # Recommend movies when the button is clicked
 if st.button('Recommend'):
     (names, posters, ratings, trailers) = recommend(selected_movie_name)
@@ -177,23 +170,5 @@ if st.button('Recommend'):
                     """,
                     unsafe_allow_html=True,
                 )
-
-                # Add to watchlist with a button
-                # if st.button(f"Save {name} to Watchlist", key=f"watchlist_{name}"):
-                #     # Ensure the watchlist is updated
-                #     if name not in st.session_state.watchlist:
-                #         st.session_state.watchlist.append(name)
-                #         st.success(f"Added {name} to your watchlist!")
-                #     else:
-                #         st.warning(f"{name} is already in your watchlist.")
-
-# Watchlist in Sidebar
-# st.sidebar.header("🎥 Your Watchlist")
-# if st.session_state.watchlist:
-#     # Display the saved watchlist
-#     for movie in st.session_state.watchlist:
-#         st.sidebar.write(f"⭐ {movie}")
-# else:
-#     st.sidebar.write("Your watchlist is empty.")
 
 
