@@ -140,6 +140,37 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+
+# Sidebar: About the App
+# -------------- Sidebar Start --------------
+with st.sidebar:
+
+    with st.expander("🎬 About"):
+        st.markdown("""
+        This Movie Recommender System suggests movies based on your selected favorite.
+        
+        - Built using Python, Streamlit, and ML
+        - Fetches posters, overviews, ratings, and trailers
+        """)
+
+    with st.expander("📝 How to Use"):
+        st.markdown("""
+        1. Select a movie from the dropdown  
+        2. Click 'Recommend'  
+        3. Get top similar movie suggestions with posters and links
+        """)
+
+    with st.expander("📫 Contact"):
+        st.markdown("""
+        👨‍💻 **Faisal Khan**  
+        📧 [Email Me](thissiede.faisalkhan@gmail.com)  
+        💼 [LinkedIn](https://www.linkedin.com/in/faisal-khan-332b882bb)  
+        🐙 [GitHub](https://github.com/Faisal-khann)
+        """)
+
+    st.markdown("---")
+
+
 # Select box for user input
 selected_movie_name = st.selectbox("What are you looking for today?", movies['title'].values)
 
@@ -170,5 +201,7 @@ if st.button('Recommend'):
                     """,
                     unsafe_allow_html=True,
                 )
+
+    st.markdown("---")
 
 
