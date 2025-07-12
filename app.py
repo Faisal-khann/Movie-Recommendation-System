@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import pickle
 import requests
+from PIL import Image
 
 # Function to fetch the poster, rating, and overview of a movie
 def fetch_movie_details(movie_id):
@@ -132,7 +133,7 @@ st.markdown(
 st.markdown(
     """
     <div style="text-align: center;">
-        <h1 style="font-size: 36px; color: #f5f5f5;">🎥 Movie Recommender System</h1>
+        <h1 style="font-size: 36px; color: #f5f5f5;">Movie Recommender System</h1>
         <h2 style="font-size: 24px; color: #f5f5f5;">Discover Your Next Favorite Movie!</h2>
         <p style="color: #b0b0b0;">Select a movie and we’ll show you some fantastic recommendations along with posters, ratings, and trailers. Get ready for your next movie marathon!</p>
     </div>
@@ -140,12 +141,15 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
+st.sidebar.title("Movie Recommender System")
+img = Image.open('cinema.png')
+st.sidebar.image(img)
 
 # Sidebar: About the App
 # -------------- Sidebar Start --------------
 with st.sidebar:
 
-    with st.expander("🎬 About"):
+    with st.expander("About"):
         st.markdown("""
         This Movie Recommender System suggests movies based on your selected favorite.
         
@@ -153,14 +157,14 @@ with st.sidebar:
         - Fetches posters, overviews, ratings, and trailers
         """)
 
-    with st.expander("📝 How to Use"):
+    with st.expander("How to Use"):
         st.markdown("""
         1. Select a movie from the dropdown  
         2. Click 'Recommend'  
-        3. Get top similar movie suggestions with posters and links
+        3. Get top similar movie suggestions with posters, ratings and trailers
         """)
 
-    with st.expander("📫 Contact"):
+    with st.expander("Contact"):
         st.markdown("""
         👨‍💻 **Faisal Khan**  
         📧 [Email Me](thissiede.faisalkhan@gmail.com)  
@@ -177,7 +181,7 @@ selected_movie_name = st.selectbox("What are you looking for today?", movies['ti
 # Recommend movies when the button is clicked
 if st.button('Recommend'):
     (names, posters, ratings, trailers) = recommend(selected_movie_name)
-    st.subheader("✨ Recommended Movies for You:")
+    st.subheader("Recommended Movies for You:")
 
     # Display movies in rows of 3 columns
     for i in range(0, len(names), 3):
