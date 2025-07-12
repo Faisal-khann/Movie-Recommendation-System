@@ -202,6 +202,16 @@ if st.button('Recommend'):
                     unsafe_allow_html=True,
                 )
 
-    st.markdown("---")
+# Footer
+st.markdown("""<hr style="margin-top: 50px;"/>""", unsafe_allow_html=True)
+
+st.markdown(
+    """
+    <div style="text-align: center; padding: 10px; font-size: 14px;">
+        Made with <span style="color: #e25555;">❤️</span> by <strong>Faisal Khan</strong>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 
