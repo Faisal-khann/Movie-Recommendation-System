@@ -167,7 +167,7 @@ with st.sidebar:
     with st.expander("Contact"):
         st.markdown("""
         👨‍💻 **Faisal Khan**  
-        📧 [Email Me](thissiede.faisalkhan@gmail.com)  
+        📧 [Email Me](mailto:faisalkhan.datasci@gmail.com)  
         💼 [LinkedIn](https://www.linkedin.com/in/faisal-khan-332b882bb)  
         🐙 [GitHub](https://github.com/Faisal-khann)
         """)
