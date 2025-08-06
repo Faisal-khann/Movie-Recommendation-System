@@ -51,7 +51,7 @@ def recommend(movie):
 # Load the movies data and similarity matrix
 movies_dict = pickle.load(open('Pickle_File/movie_dict.pkl', 'rb'))
 movies = pd.DataFrame(movies_dict)
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+similarity = pickle.load(open('Pickle_File/similarity.pkl', 'rb'))
 
 # Initialize Streamlit session state for watchlist
 if "watchlist" not in st.session_state:
