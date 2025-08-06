@@ -142,10 +142,6 @@ st.markdown(
 )
 
 st.sidebar.title("Movie Recommender System")
-img = Image.open('cinema.png')
-st.sidebar.image(img)
-
-# Sidebar: About the App
 # -------------- Sidebar Start --------------
 with st.sidebar:
 
