@@ -13,7 +13,7 @@
     
 </p>
 
-## How it Works⬇️
+## How it Works
 
   1. Select a movie from the dropdown.
   2. Click the "Recommend" button.
