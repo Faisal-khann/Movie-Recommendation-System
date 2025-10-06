@@ -1,88 +1,75 @@
-# Movie-Recommendation-System
+# 🎬 Movie Recommendation System
 
-## Project Description ⬇️
-<p>
-  The Movie Recommender System is a Streamlit-based application designed to help users discover movies they might enjoy.<br>
-  By selecting a movie, the system provides personalized recommendations based on similarity, along with the following features:<br>
-  
-   * <strong>Recommendations:</strong> Displays a list of suggested movies.
-   * <strong>Movie Posters:</strong> Shows the posters for a visual preview.
-   * <strong>Ratings and Overviews:</strong> Includes average ratings and a short description of each movie.
-   * <strong>Trailers:</strong> Provides links to YouTube trailers for easy access.
-   * <strong>User Interface:</strong> Features a clean and interactive design, enhancing the user experience.
-    
-</p>
+## 📌 Table of Contents
+- [Overview](#overview)
+- [Project Workflow](#project-workflow)
+- [Business Problem](#business-problem)
+- [Ingestion Script](#ingestion-script)
+- [Tools & Technologies](#tools--technologies)
+- [Project Structure](#project-structure)
+- [Data Pipeline Overview](#data-pipeline-overview)
+- [Dashboard Preview](#dashboard-preview)
+- [Key Outcomes](#key-outcomes)
+- [Business Insights](#business-insights)
+- [How to Run This Project](#how-to-run-this-project)
+- [Author & Contact](#author--contact)
+- [License](#license)
 
-## How it Works
+---
 
-  1. Select a movie from the dropdown.
-  2. Click the "Recommend" button.
-  3. View a list of similar movies, along with their:
+## 🧩 Overview
+The **Movie Recommendation System** is a **Streamlit-based web application** that helps users discover movies they might enjoy.  
+It uses **content-based filtering** powered by machine learning to recommend movies similar to a user’s selection.
 
-        * Posters
-        * Ratings
-        * Overviews
-        * Links to YouTube trailers
+**✨ Key Features**
+- 🎞️ Personalized movie recommendations  
+- 🖼️ Movie posters for a visual preview  
+- ⭐ Ratings and overviews  
+- ▶️ Direct YouTube trailer links  
+- 💡 Clean, interactive Streamlit interface  
 
-## Technologies Used⬇️
+---
 
-  1. **Python:** Core programming language.
-  2. **Streamlit:** Framework for building the web app.
-  3. **TMDb API:** Fetches movie details like posters, ratings, and trailers.
-  4. **Machine Learning:** Recommendation logic based on movie similarity.
-  5. **Pandas:** For handling movie data.
-  6. **Pickle:** For saving preprocessed data (not included in this repository).
+## ⚙️ Project Workflow
+1. Load preprocessed movie metadata (`movie_dict.pkl`) and similarity matrix (`similarity.pkl`).
+2. User selects a movie from the dropdown.
+3. The system calculates the top 5 most similar movies.
+4. Fetch movie posters, ratings, and overviews using **TMDb API**.
+5. Display results in a visually appealing interface.
 
-## Prerequisites⬇️
+---
 
- 1. Install Python (version 3.7 or later).
- 2. Install required Python libraries:
+## 💼 Business Problem
+With thousands of movies released every year, users face **information overload** and often struggle to pick what to watch next.  
+This project solves that by providing **personalized movie suggestions** based on similarity, enhancing **user experience**, and boosting **content discovery**.
 
-         pip install streamlit pandas requests
+---
 
-## Setup⬇️
+## 📥 Ingestion Script
 
- 1. Prepare Data:
-    Since `movie_dict.pkl` and `similarity.pkl` are not provided, you need to generate them:
+Here’s a simple example to generate your own `movie_dict.pkl` and `similarity.pkl` files using a movie dataset:
 
-       * The `movie_dict.pkl` file should contain movie metadata (e.g., movie IDs, titles, etc.).
-       * The `similarity.pkl` file should be a precomputed similarity matrix.
-       * Use your dataset and appropriate Python libraries to create these files.
-2. Clone the Repository:
-   
-       git clone https://github.com/your-username/Movie-Recommender-System.git
-       cd Movie-Recommender-System
-   
-4. Add the Required Files:
-    Place the generated `movie_dict.pkl` and `similarity.pkl` files in the project directory.
-   
-5. Run the Application:
-   
-        streamlit run app.py
+```python
+import pandas as pd
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.metrics.pairwise import cosine_similarity
+import pickle
 
-## API Integration⬇️
+# Load your dataset
+movies = pd.read_csv("movies.csv")
 
-   The app uses the [TMDb API](https://developer.themoviedb.org/reference/intro/getting-started) to fetch movie details. Replace the API key in the code (`api_key`) with your own TMDb API key.
+# Combine textual features into a single 'tags' column
+movies['tags'] = movies['overview'] + movies['genres'] + movies['keywords']
 
-## Project Structure⬇️
+# Convert text data to feature vectors
+cv = CountVectorizer(max_features=5000, stop_words='english')
+vectors = cv.fit_transform(movies['tags']).toarray()
 
-    Movie-Recommender-System/
-    │
-    ├── app.py                # Main Streamlit application
-    ├── README.md             # Project documentation
-    └── requirements.txt      # Dependencies
+# Compute similarity
+similarity = cosine_similarity(vectors)
 
+# Save the data
+pickle.dump(movies.to_dict(), open('movie_dict.pkl', 'wb'))
+pickle.dump(similarity, open('similarity.pkl', 'wb'))
 
-## Screenshot
-
-<img width="714" height="380" alt="Image" src="https://github.com/user-attachments/assets/1efb744a-86d7-418e-a517-587c3fe99912" />
-
-
-## Contributions ⬇️
-<p>Contributions are welcome! Feel free to fork this repository, make improvements, and submit pull requests.<br>
-    Together, let's make this recommendation system even more powerful and versatile.</p>
-
-## License ⬇️
-This project is licensed under the [MIT License](https://github.com/Faisal-khann/Movie-Recommendation-System?tab=MIT-1-ov-file)
-2025 Faisal Khan
-<p>If you like this project don’t forget to 🌟(star) the repository and Clone this repository.</p>
+---
