@@ -1,8 +1,12 @@
 # Movie Recommendation System
 
 <em>The **Movie Recommendation System** is a **Streamlit-based web application** that helps users discover movies they might enjoy.  
-It uses **content-based filtering** powered by machine learning to recommend movies similar to a user’s selection.</em>
-  
+It uses **content-based filtering** powered by machine learning to recommend movies similar to a user’s selection.</em><br>
+
+[![View Live App](https://img.shields.io/badge/View_Live_App-Click_Here-blue?style=for-the-badge&logo=streamlit)](https://faisal-khann-movie-recommendation-system-app-zfwnir.streamlit.app/)
+
+<!--[![Live App](https://img.shields.io/badge/Launch_App-Streamlit-red?style=for-the-badge&logo=streamlit)](https://faisal-khann-movie-recommendation-system-app-zfwnir.streamlit.app/)-->
+ 
 ## 📌 Table of Contents
 - [Overview](#overview)
 - [Project Workflow](#project-workflow)
@@ -11,7 +15,7 @@ It uses **content-based filtering** powered by machine learning to recommend mov
 - [Tools & Technologies](#tools--technologies)
 - [Project Structure](#project-structure)
 - [Data Pipeline Overview](#data-pipeline-overview)
-- [Dashboard Preview](#dashboard-preview)
+- [App Preview](#app-preview)
 - [Key Outcomes](#key-outcomes)
 - [How to Run This Project](#how-to-run-this-project)
 - [License](#license)
@@ -108,9 +112,9 @@ pickle.dump(similarity, open('similarity.pkl', 'wb'))
 | **4. Similarity Calculation** | Compute cosine similarity between movie vectors to identify similar movies. |
 | **5. Deployment** | Integrate the model with Streamlit UI and TMDb API for real-time movie recommendations. |
 
-## Dashboard Preview
-<p align="center"> <img width="714" height="380" src="https://github.com/user-attachments/assets/1efb744a-86d7-418e-a517-587c3fe99912" alt="App Screenshot"> </p>
-
+## App Preview
+<p align="center"> <img width="1854" height="824" alt="Image" src="https://github.com/user-attachments/assets/5c0ec9fe-0d47-454f-9b4f-a7ce1824b6a0" > </p>
+<p align="center"> <img width="1844" height="874" alt="Image" src="https://github.com/user-attachments/assets/063ddf48-264e-4f0c-8caa-1f6d9ed5eee2" > </p>
 
 ## Key Outcomes
 
