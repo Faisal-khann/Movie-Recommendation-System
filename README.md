@@ -75,7 +75,7 @@
 
 ## Screenshot
 
-![Output](https://github.com/user-attachments/assets/b48deaee-7c2d-4a1c-81e1-f1db3b5bfb33)
+<img width="714" height="380" alt="Image" src="https://github.com/user-attachments/assets/1efb744a-86d7-418e-a517-587c3fe99912" />
 
 
 ## Contributions ⬇️
