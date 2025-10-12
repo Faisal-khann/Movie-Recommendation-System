@@ -1,4 +1,4 @@
-# Movie Recommendation System
+# Recommendation Engine (Movie Recommender System)
 
 <em>The **Movie Recommendation System** is a **Streamlit-based web application** that helps users discover movies they might enjoy.  
 It uses **content-based filtering** powered by machine learning to recommend movies similar to a user’s selection.</em><br>
